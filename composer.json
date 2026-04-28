@@ -1,8 +1,8 @@
 {
-    "name": "tonny/mega-menu",
+    "name": "aardex/aardex-components",
     "autoload": {
         "psr-4": {
-            "Tonny\\MegaMenu\\": "src/"
+            "AARDEX": "src/"
         }
     },
     "require-dev": {
