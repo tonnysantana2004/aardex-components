@@ -5,6 +5,10 @@
  * @package AARDEX
  */
 
+use AARDEX\MegaMenuComponent;
+
+require 'MegaMenuComponent.php';
+
 add_shortcode(
 	'mega_menu',
 	function () {
@@ -16,8 +20,12 @@ add_shortcode(
 				'type'        => 'first_level',
 				'inner_items' => array(
 					array(
-						'label' => 'Panel 1',
-						'type'  => 'pannel',
+						'label'          => 'Panel 1',
+						'type'           => 'pannel',
+						'see_all_button' => array(
+							'label' => 'See all solutions',
+							'link'  => 'https://site.com',
+						),
 					),
 				),
 			),
@@ -66,81 +74,24 @@ add_shortcode(
 	}
 );
 
-/**
- * Mega Menu Component Class
- */
-class MegaMenuComponent {
 
-	/**
-	 * Render the mega menu items
-	 *
-	 * @param array $menu_items Array with the first level items.
-	 */
-	public function render_menu_items( $menu_items ): string {
+add_action(
+	'wp_enqueue_scripts',
+	function () {
 
-		$output = '';
+		wp_enqueue_style(
+			'aardex_components_styles',
+			plugin_dir_url( __FILE__ ) . 'src/style.css',
+			array(),
+			filemtime( plugin_dir_path( __FILE__ ) . 'src/style.css' )
+		);
 
-		foreach ( $menu_items as $item ) {
-			$output .= $this->render_menu_item( $item );
-		}
-
-		return $output;
+		wp_enqueue_style(
+			'aardex_lato_font',
+			// TODO: remove later.
+			'https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap', //phpcs:ignore 
+			array(),
+			wp_rand( 0, 10000000000 )
+		);
 	}
-
-	/**
-	 * Render the menu item
-	 *
-	 * @param array $item_args Array with the list item arguments.
-	 */
-	public function render_menu_item( $item_args ) {
-
-		$output = '';
-
-		switch ( $item_args['type'] ) {
-
-			case 'first_level':
-				$output = $this->first_level_template( $item_args );
-				break;
-
-			case 'pannel':
-				$output = $this->pannel_template( $item_args );
-				break;
-		}
-
-		return $output;
-	}
-
-	/**
-	 * Render the first level template
-	 *
-	 * @param array $item_args Array with the list item arguments.
-	 */
-	public function first_level_template( $item_args ) {
-		ob_start();
-
-		// Stores the HTML element for each inner item.
-		$rendered_inner_items = '';
-
-		if ( isset( $item_args['inner_items'] ) && is_array( $item_args['inner_items'] ) ) {
-
-			foreach ( $item_args['inner_items'] as $inner_item ) {
-				$rendered_inner_items .= $this->render_menu_item( $inner_item );
-			}
-		}
-
-		require AARDEX_COMPONENTS_DIR . '/templates/li-first-level.php';
-		return ob_get_clean();
-	}
-
-	/**
-	 * Render the inner page template
-	 *
-	 * @param array $item_args Array with the list item arguments.
-	 */
-	public function pannel_template( $item_args ) {
-
-		ob_start();
-		require AARDEX_COMPONENTS_DIR . '/templates/pannel.php';
-		return ob_get_clean();
-	}
-}
+);
