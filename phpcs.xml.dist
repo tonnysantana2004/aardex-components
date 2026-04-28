@@ -18,10 +18,6 @@
     <!-- Use WordPress standards -->
     <rule ref="WordPress" />
 
-    <!-- Optional stricter rules (recommended in most professional setups) -->
-    <rule ref="WordPress-Extra" />
-    <rule ref="WordPress-Docs" />
-
     <!-- PHP compatibility (adjust version as needed) -->
     <config name="testVersion" value="7.4-" />
 
