@@ -2,7 +2,13 @@
     --aardex-mega-menu-width: 375px;
     --aardex-mega-menu-padding: 0 20px;
     --aardex-mega-menu-font-size: 14px;
+    --aardex-mega-menu-input-height: 56px;
+    --aardex-mega-menu-input-gap: 4px;
+
     --aardex-mega-menu-background: #F8F8F8;
+    --aardex-mega-menu-primary-color: #0072BF;
+
+    --aardex-mega-menu-text-color: #484848;
 }
 
 /* Main Wrapper */
@@ -40,7 +46,7 @@
 
 /* First Level Item  */
 .aardex-mega-menu--first_level-button {
-    min-height: 56px;
+    min-height: var(--aardex-mega-menu-input-height);
     width: 100%;
     padding: 0;
 
@@ -67,7 +73,38 @@
     position: absolute;
     height: 100%;
     width: 100%;
-    top:0;
-    left:0;
+    top: 0;
+    left: 0;
     background-color: #202020a0;
+
+}
+
+.aardex-mega-menu--pannel-content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    margin: 32px 0;
+    padding: var(--aardex-mega-menu-padding);
+}
+
+.aardex-mega-menu--pannel_back_button {
+    width: 100%;
+    min-height: var(--aardex-mega-menu-input-height);
+    font-weight: 700;
+    font-family: inherit;
+    color: var(--aardex-mega-menu-text-color);
+    border: none;
+    border-radius: 0;
+
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: var(--aardex-mega-menu-input-gap);
+
+    padding: var(--aardex-mega-menu-padding);
+
+    & svg {
+        stroke: var(--aardex-mega-menu-primary-color);
+    }
 }
