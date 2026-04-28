@@ -2,7 +2,7 @@
     "name": "aardex/aardex-components",
     "autoload": {
         "psr-4": {
-            "AARDEX": "src/"
+            "AARDEX\\": "src/"
         }
     },
     "require-dev": {

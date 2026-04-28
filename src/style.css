@@ -1,0 +1,60 @@
+:root {
+    --aardex-mobile-menu-width: 375px;
+    --aardex-mobile-menu-padding: 0 20px;
+    --aardex-mobile-menu-font-size: 14px;
+    --aardex-mobile-menu-background: #F8F8F8;
+}
+
+/* Main Wrapper */
+.aardex-mobile-menu {
+    box-sizing: border-box;
+
+    /* Position */
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    /* Sizings */
+    font-size: var(--aardex-mobile-menu-font-size);
+    padding: var(--aardex-mobile-menu-padding);
+
+    width: var(--aardex-mobile-menu-width);
+    max-width: 100vw;
+    min-height: 100vh;
+
+    /* Colors */
+    background-color: var(--aardex-mobile-menu-background);
+    color: black;
+
+    /* Reset Ul */
+    & ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+/* First Level Item  */
+.aardex-mobile-menu--first_level-button {
+    height: 56px;
+    width: 100%;
+    padding: 0;
+
+    font-family: "Lato", sans-serif;
+    font-weight: 700;
+    text-align: left;
+
+    background: transparent;
+
+    border: none;
+    border-bottom: solid 1px #E8E8E8;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    & svg {
+        stroke: #d9d9d9;
+    }
+
+}
