@@ -12,76 +12,31 @@ add_shortcode(
 		$menu_items = array(
 
 			array(
-				'label'     => 'Solutions',
-				'item_type' => 'inner_page',
-				'template'  => 'first_level',
-				'children'  => array(
-
-					array(
-						'label'     => 'Technology',
-						'item_type' => 'taxonomy_group',
-						'children'  => array(
-
-							array(
-								'label'     => 'MEMS Hardware Ecosystem',
-								'item_type' => 'inner_page',
-								'template'  => 'second_level',
-								'children'  => array(
-
-									array(
-										'label'     => 'Mems© Caps',
-										'item_type' => 'link',
-										'template'  => 'first_level',
-										'url'       => 'www.site.com',
-									),
-
-								),
-							),
-						),
-					),
-				),
+				'label' => 'Solutions',
+				'type'  => 'first_level',
 			),
 			array(
-				'label'     => 'Therapeutic Areas',
-				'template'  => 'first_level',
-				'item_type' => 'link',
-				'url'       => 'www.site.com',
+				'label' => 'Therapeutic Areas',
+				'type'  => 'first_level',
 			),
 		);
+
+		$mega_menu = new MegaMenuComponent();
 
 		ob_start(); ?>
 
 		<div class="aardex-mobile-menu--first_level-wrapper">
 			<div class="aardex-mobile-menu">
-
+				
 				<ul>
-					<li class="aardex-mobile-menu--first_level-item" data-aardex-menu-object-type="page">
-						
-						<button class="aardex-mobile-menu--first_level-button" >Solutions 
-							<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 12L10 8L6 4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-						</button>
-						
-						<div class="aardex-mobile-menu--inner-page" data-open="true" data-page-id="15" style="visibility: hidden; position:absolute">
-							
-							<button>Back</button>
-							
-							<ul>
-								
-								<li>
-									
-								</li>
-									
-							</ul>
+					<?php
 
-						</div>
-							
-					</li>
-					
-					<li><?php echo Template::render_template( array( 'label' => 'Therapeutic Areas' ) ); ?></li>
-					<li><?php echo Template::render_template( array( 'label' => 'Resources' ) ); ?></li>
-					<li><?php echo Template::render_template( array( 'label' => 'About' ) ); ?></li>
-					<li><?php echo Template::render_template( array( 'label' => 'Contact' ) ); ?></li>
+					// Ignoring the phpcs notice because the escaping
+					// is being applied within the template.
+                    echo $mega_menu->start( $menu_items ); //phpcs:ignore
 
+					?>
+					 
 				</ul>
 					
 			</div>
@@ -93,13 +48,54 @@ add_shortcode(
 	}
 );
 
-// TODO: Make the render function load the template dinamycally based on the array
-class Template {
+/**
+ * Mega Menu Component Class
+ */
+class MegaMenuComponent {
 
-	public static function render_template( $args = array() ) {
+	public function start( $items ) {
 
-		$label = $args['label'];
+		$output = '';
 
-		require AARDEX_COMPONENTS_DIR . '/templates/first-level.php';
+		foreach ( $items as $item ) {
+			$output .= $this->render_field( $item );
+		}
+
+		return $output;
+	}
+
+	public function render_field( $args ) {
+
+		$output = '';
+
+		switch ( $args['type'] ) {
+
+			case 'first_level':
+				$output = $this->li_first_level( $args );
+				break;
+
+			case 'inner_page':
+				$output = $this->inner_page( $args );
+				break;
+		}
+
+		return $output;
+	}
+
+	public function li_first_level( $args ) {
+		ob_start();
+
+		if ( isset( $args['children'] ) ) {
+			foreach ( $args['children'] as $child ) {
+				'test';
+			}
+		}
+
+		require AARDEX_COMPONENTS_DIR . '/templates/li-first-level.php';
+		return ob_get_clean();
+	}
+
+	public function inner_page() {
+		return '<li>teste</li>';
 	}
 }
