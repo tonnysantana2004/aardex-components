@@ -81,9 +81,9 @@ add_action(
 
 		wp_enqueue_style(
 			'aardex_components_styles',
-			plugin_dir_url( __FILE__ ) . 'src/style.css',
+			AARDEX_COMPONENTS_PLUGIN_URL . 'src/assets/style.css',
 			array(),
-			filemtime( plugin_dir_path( __FILE__ ) . 'src/style.css' )
+			filemtime( AARDEX_COMPONENTS_PLUGIN_DIR . 'src/assets/style.css' )
 		);
 
 		wp_enqueue_style(
