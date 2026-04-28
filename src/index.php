@@ -12,11 +12,29 @@ add_shortcode(
 		$menu_items = array(
 
 			array(
-				'label' => 'Solutions',
-				'type'  => 'first_level',
+				'label'       => 'Solutions',
+				'type'        => 'first_level',
+				'inner_items' => array(
+					array(
+						'label' => 'Panel 1',
+						'type'  => 'pannel',
+					),
+				),
 			),
 			array(
 				'label' => 'Therapeutic Areas',
+				'type'  => 'first_level',
+			),
+			array(
+				'label' => 'Resources',
+				'type'  => 'first_level',
+			),
+			array(
+				'label' => 'About',
+				'type'  => 'first_level',
+			),
+			array(
+				'label' => 'Contact',
 				'type'  => 'first_level',
 			),
 		);
@@ -25,15 +43,15 @@ add_shortcode(
 
 		ob_start(); ?>
 
-		<div class="aardex-mobile-menu--first_level-wrapper">
-			<div class="aardex-mobile-menu">
+		<div class="aardex-mega-menu--first_level-wrapper">
+			<div class="aardex-mega-menu">
 				
 				<ul>
 					<?php
 
 					// Ignoring the phpcs notice because the escaping
 					// is being applied within the template.
-                    echo $mega_menu->start( $menu_items ); //phpcs:ignore
+                    echo $mega_menu->render_menu_items( $menu_items ); //phpcs:ignore
 
 					?>
 					 
@@ -53,41 +71,60 @@ add_shortcode(
  */
 class MegaMenuComponent {
 
-	public function start( $items ) {
+	/**
+	 * Render the mega menu items
+	 *
+	 * @param array $menu_items Array with the first level items.
+	 */
+	public function render_menu_items( $menu_items ): string {
 
 		$output = '';
 
-		foreach ( $items as $item ) {
-			$output .= $this->render_field( $item );
+		foreach ( $menu_items as $item ) {
+			$output .= $this->render_menu_item( $item );
 		}
 
 		return $output;
 	}
 
-	public function render_field( $args ) {
+	/**
+	 * Render the menu item
+	 *
+	 * @param array $item_args Array with the list item arguments.
+	 */
+	public function render_menu_item( $item_args ) {
 
 		$output = '';
 
-		switch ( $args['type'] ) {
+		switch ( $item_args['type'] ) {
 
 			case 'first_level':
-				$output = $this->li_first_level( $args );
+				$output = $this->first_level_template( $item_args );
 				break;
 
-			case 'inner_page':
-				$output = $this->inner_page( $args );
+			case 'pannel':
+				$output = $this->pannel_template( $item_args );
 				break;
 		}
 
 		return $output;
 	}
 
-	public function li_first_level( $args ) {
+	/**
+	 * Render the first level template
+	 *
+	 * @param array $item_args Array with the list item arguments.
+	 */
+	public function first_level_template( $item_args ) {
 		ob_start();
 
-		if ( isset( $args['children'] ) ) {
-			foreach ( $args['children'] as $child ) {
-				'test';
+		// Stores the HTML element for each inner item.
+		$rendered_inner_items = '';
+
+		if ( isset( $item_args['inner_items'] ) && is_array( $item_args['inner_items'] ) ) {
+
+			foreach ( $item_args['inner_items'] as $inner_item ) {
+				$rendered_inner_items .= $this->render_menu_item( $inner_item );
 			}
 		}
 
@@ -95,7 +132,15 @@ class MegaMenuComponent {
 		return ob_get_clean();
 	}
 
-	public function inner_page() {
-		return '<li>teste</li>';
+	/**
+	 * Render the inner page template
+	 *
+	 * @param array $item_args Array with the list item arguments.
+	 */
+	public function pannel_template( $item_args ) {
+
+		ob_start();
+		require AARDEX_COMPONENTS_DIR . '/templates/pannel.php';
+		return ob_get_clean();
 	}
 }
