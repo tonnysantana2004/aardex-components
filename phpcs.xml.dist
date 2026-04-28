@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<ruleset name="WordPress Coding Standards">
+
+    <description>
+        PHP_CodeSniffer configuration for WordPress Coding Standards.
+    </description>
+
+    <!-- Paths to scan -->
+    <file>./src</file>
+
+    <!-- Exclude common non-source directories -->
+    <exclude-pattern>*/node_modules/*</exclude-pattern>
+    <exclude-pattern>*/vendor/*</exclude-pattern>
+    <exclude-pattern>*/build/*</exclude-pattern>
+    <exclude-pattern>*/dist/*</exclude-pattern>
+    <exclude-pattern>*/assets/*</exclude-pattern>
+
+    <!-- Use WordPress standards -->
+    <rule ref="WordPress" />
+
+    <!-- Optional stricter rules (recommended in most professional setups) -->
+    <rule ref="WordPress-Extra" />
+    <rule ref="WordPress-Docs" />
+
+    <!-- PHP compatibility (adjust version as needed) -->
+    <config name="testVersion" value="7.4-" />
+
+    <!-- Allow short array syntax -->
+    <rule ref="Generic.Arrays.DisallowShortArraySyntax">
+        <severity>0</severity>
+    </rule>
+
+    <!-- Enforce escaping -->
+    <rule ref="WordPress.Security.EscapeOutput" />
+
+    <!-- Enforce nonce verification -->
+    <rule ref="WordPress.Security.NonceVerification" />
+
+    <!-- Customize line length if needed -->
+    <rule ref="Generic.Files.LineLength">
+        <properties>
+            <property name="lineLimit" value="120" />
+            <property name="absoluteLineLimit" value="0" />
+        </properties>
+    </rule>
+
+    <!-- Ignore file names in themes/plugins if needed -->
+    <rule ref="WordPress.Files.FileName">
+        <severity>0</severity>
+    </rule>
+
+</ruleset>
