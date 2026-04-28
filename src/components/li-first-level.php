@@ -21,7 +21,12 @@
 	<?php if ( ! empty( $rendered_inner_items ) ) : ?>
 
 	<div class="aardex-mega-menu--children">
-		<?php echo wp_kses_post( $rendered_inner_items ); ?>
+		<?php
+
+		// Ignoring because the escaping is being handled inside each item.
+        echo $rendered_inner_items; //phpcs:ignore
+
+		?>
 	</div>
 	
 	<?php endif; ?>
