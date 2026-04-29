@@ -1,0 +1,37 @@
+.aardex-mega-menu--list_item_group > ul {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 24px;
+    margin:0;
+    list-style: none;
+    padding:0;
+}
+
+.aardex-mega-menu--list_item_group_label {
+    font-size: 16px;
+    font-family: inherit;
+    line-height: 110%;
+    padding: 0;
+    height: 27px;
+    border:none;
+    color:var(--aardex-mega-menu-gray-60);
+    font-weight: 700;
+    background:none;
+
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap:4px;
+
+
+    &:after{
+        content:"";
+        width:18px;
+        height:1px;
+        background:var(--aardex-mega-menu-primary-color);
+        display:block;
+    }
+}

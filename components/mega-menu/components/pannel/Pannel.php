@@ -41,22 +41,25 @@ class Pannel {
 		$output .= '</button>';
 
 		// Content.
-		$output .= '<ul class="aardex-mega-menu--children aardex-mega-menu--pannel-content">';
+		$output .= '<div class="aardex-mega-menu--pannel_content">';
+		$output .= '<ul class="aardex-mega-menu--children">';
 
 		if ( isset( $args['see_all_button'] ) ) {
 
-			$output .= '<li>';
-			$output .= '<a href="' . $args['see_all_button']['link'] . '" class="aardex-mega-menu--pannel_see_all">';
+			$output .= '<li class="aardex-mega-menu--pannel_see_all">';
+			$output .= '<a href="' . $args['see_all_button']['link'] . '">';
 			$output .= $args['see_all_button']['label'];
 			$output .= '</a>';
 			$output .= '</li>';
 		}
 
-		if ( empty( $inner_items ) ) {
+		if ( ! empty( $inner_items ) ) {
 			$output .= $inner_items;
 		}
 
 		$output .= '</ul>';
+		$output .= '</div>';
+
 		$output .= '</li>';
 
 		return $output;

@@ -28,6 +28,24 @@ add_shortcode(
 							'label' => 'See all solutions',
 							'link'  => 'https://site.com',
 						),
+                        'inner_items' => array(
+                            array(
+                                'label' => 'Technology',
+                                'type'  => 'list_item_group',
+                            ),
+                            array(
+                                'label' => 'Services',
+                                'type'  => 'list_item_group',
+                            ),
+                            array(
+                                'label' => 'Segments',
+                                'type'  => 'list_item_group',
+                            ),
+                            array(
+                                'label' => 'Clinical Trials',
+                                'type'  => 'list_item_group',
+                            ),
+                        )
 					),
 				),
 			),

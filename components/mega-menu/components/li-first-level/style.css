@@ -1,5 +1,5 @@
 /* First Level Item  */
-.aardex-mega-menu--first_level-button {
+.aardex-mega-menu--first_level_button {
     min-height: var(--aardex-mega-menu-input-height);
     width: 100%;
     padding: 0;
@@ -9,6 +9,8 @@
     text-align: left;
 
     background: transparent;
+    
+    color: black;
 
     border: none;
     border-bottom: solid 1px #E8E8E8;

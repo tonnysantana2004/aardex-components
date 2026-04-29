@@ -27,7 +27,7 @@ class ListItemFirstLevel {
 		$output = '<li class="aardex-mega-menu--first_level">';
 
 		// Button.
-		$output .= '<button class="aardex-mega-menu--first_level-button" >';
+		$output .= '<button class="aardex-mega-menu--first_level_button" >';
 		$output .= $args['label'];
 
 		// Icon.
