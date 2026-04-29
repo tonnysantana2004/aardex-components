@@ -47,31 +47,9 @@ add_shortcode(
 			),
 		);
 
-		$mega_menu = new MegaMenuComponent();
+		$output = new MegaMenuComponent();
 
-		ob_start(); ?>
-
-		<div class="aardex-mega-menu--wrapper">
-
-			<div class="aardex-mega-menu">
-				
-				<ul>
-					<?php
-
-					// Ignoring the phpcs notice because the escaping
-					// is being applied within the template.
-                    echo $mega_menu->render_menu_items( $menu_items ); //phpcs:ignore
-
-					?>
-					 
-				</ul>
-					
-			</div>
-		</div>
-
-		<?php
-
-		return ob_get_clean();
+		return $output->render( $menu_items );
 	}
 );
 

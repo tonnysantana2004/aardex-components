@@ -1,12 +1,3 @@
-.aardex-mega-menu--pannel-content {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-
-    margin: 32px 0;
-    padding: var(--aardex-mega-menu-padding);
-}
-
 .aardex-mega-menu--pannel_back_button {
     width: 100%;
     min-height: var(--aardex-mega-menu-input-height);
@@ -28,4 +19,13 @@
     & svg {
         stroke: var(--aardex-mega-menu-primary-color);
     }
+}
+
+.aardex-mega-menu--pannel-content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    margin: 32px 0;
+    padding: var(--aardex-mega-menu-padding);
 }
