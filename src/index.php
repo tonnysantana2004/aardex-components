@@ -64,7 +64,7 @@ add_shortcode(
 			array(
 				'label' => 'Contact',
 				'type'  => 'first_level',
-			),
+			)
 		);
 
 		$output = new MegaMenuComponent();

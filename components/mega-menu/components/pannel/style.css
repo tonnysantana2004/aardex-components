@@ -3,16 +3,25 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    overflow-x: hidden;
-    overflow-y: auto;
+    height: var(--aardex-mega-menu-content-height);
 
+    display:flex;
+    flex-direction: column;
 
     background-color: var(--aardex-mega-menu-background);
 
+    /* When not open, hide and deactivate any click events */
     &:not(.open) {
-        /* display: none; */
+        display: none;
+        pointer-events: none;
     }
+
+}
+
+/* Add scrollbar to the content inside the pannel */
+.aardex-mega-menu--pannel_content {
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .aardex-mega-menu--pannel_back_button {
@@ -38,7 +47,7 @@
     }
 }
 
-.aardex-mega-menu--pannel_content > ul {
+.aardex-mega-menu--pannel_content>ul {
     display: flex;
     flex-direction: column;
     gap: 32px;

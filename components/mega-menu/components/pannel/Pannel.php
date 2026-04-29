@@ -27,7 +27,7 @@ class Pannel {
 		ob_start();
 
 		// Main Wrapper.
-		$output = '<li class="aardex-mega-menu--pannel" id="unique123">';
+		$output = '<li class="aardex-mega-menu--pannel open" id="unique123">';
 
 		// Button.
 		$output .= '<button class="aardex-mega-menu--pannel_back_button" data-aardex-panel-id="unique123">';

@@ -16,16 +16,21 @@
     --aardex-mega-menu-gray-80: #484848;
     --aardex-mega-menu-gray-70: #707070;
     --aardex-mega-menu-gray-60: #888A8C;
+
+    --aardex-mega-menu-mobile-header-height: 96px;
+    --aardex-mega-menu-content-height: calc(100vh - 96px);
+
+    overflow: hidden;
 }
 
 .aardex-mega-menu--wrapper {
     position: fixed;
-    top:0;
-    left:0;
-    width:var(--aardex-mega-menu-width);
+    top: 0;
+    left: 0;
+    width: var(--aardex-mega-menu-width);
     max-width: 100%;
-    height:100vh;
-    
+    height: 100vh;
+
     color: black;
     background-color: var(--aardex-mega-menu-background);
 }
@@ -40,14 +45,23 @@ ul.aardex-mega-menu {
 
     /* Sizings */
     font-size: var(--aardex-mega-menu-font-size);
-    padding: 0 var(--aardex-mega-menu-space-section-horizontal);
+    
+    /* 2 pixels just to show the outline, but it is not on the figma layout */
+    padding: 2px var(--aardex-mega-menu-space-section-horizontal);
 
     width: 100%;
-    height: 100%;
+
+    height: var(--aardex-mega-menu-content-height);
+
+    /* Has no open panels, so activate the scrollbar */
+    &:not(:has(.open)) {
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
 
     margin: 0;
     list-style: none;
-    
+
     &,
     & * {
         box-sizing: border-box;
