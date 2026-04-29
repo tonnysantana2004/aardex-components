@@ -32,18 +32,24 @@ add_shortcode(
                             array(
                                 'label' => 'Technology',
                                 'type'  => 'list_item_group',
-                            ),
-                            array(
-                                'label' => 'Services',
-                                'type'  => 'list_item_group',
-                            ),
-                            array(
-                                'label' => 'Segments',
-                                'type'  => 'list_item_group',
-                            ),
-                            array(
-                                'label' => 'Clinical Trials',
-                                'type'  => 'list_item_group',
+                                'inner_items' => array(
+                                    array(
+                                        'label' => 'MEMS Hardware Ecosystem ',
+                                        'type'  => 'second_level',
+                                    ),
+                                    array(
+                                        'label' => 'MEMS Adherence Software ',
+                                        'type'  => 'second_level',
+                                    ),
+                                    array(
+                                        'label' => 'MEMS Mobile ',
+                                        'type'  => 'second_level',
+                                    ),
+                                    array(
+                                        'label' => 'MEMS Intelligence',
+                                        'type'  => 'second_level',
+                                    ),
+                                )
                             ),
                         )
 					),

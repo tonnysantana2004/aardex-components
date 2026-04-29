@@ -1,0 +1,5 @@
+.aardex-mega-menu--second_level_button {
+    & svg {
+        stroke: black
+    }
+}

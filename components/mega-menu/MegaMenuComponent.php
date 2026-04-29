@@ -8,10 +8,12 @@
 namespace AARDEX;
 
 require __DIR__ . '/components/li-first-level/ListItemFirstLevel.php';
+require __DIR__ . '/components/li-second-level/ListItemSecondLevel.php';
 require __DIR__ . '/components/list-item-group/ListItemGroup.php';
 require __DIR__ . '/components/pannel/Pannel.php';
 require __DIR__ . '/components/mobile-header/MobileHeader.php';
 use ListItemFirstLevel;
+use ListItemSecondLevel;
 use ListItemGroup;
 use MobileHeader;
 use Pannel;
@@ -76,6 +78,9 @@ class MegaMenuComponent {
 
 			case 'list_item_group':
 				$output = ( new ListItemGroup() )->render( $args, $rendered_inner_items );
+				break;
+			case 'second_level':
+				$output = ( new ListItemSecondLevel() )->render( $args, $rendered_inner_items );
 				break;
 		}
 

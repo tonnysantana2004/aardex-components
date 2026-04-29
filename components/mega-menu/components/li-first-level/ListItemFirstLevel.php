@@ -21,8 +21,6 @@ class ListItemFirstLevel {
 	 */
 	public function render( $args, $inner_items ) {
 
-		ob_start();
-
 		// Main Wrapper.
 		$output = '<li class="aardex-mega-menu--first_level">';
 
