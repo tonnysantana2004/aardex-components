@@ -51,7 +51,8 @@ add_shortcode(
 
 		ob_start(); ?>
 
-		<div class="aardex-mega-menu--first_level-wrapper">
+		<div class="aardex-mega-menu--wrapper">
+
 			<div class="aardex-mega-menu">
 				
 				<ul>
@@ -81,9 +82,9 @@ add_action(
 
 		wp_enqueue_style(
 			'aardex_components_styles',
-			AARDEX_COMPONENTS_PLUGIN_URL . 'src/assets/style.css',
+			AARDEX_COMPONENTS_PLUGIN_URL . 'src/style.css',
 			array(),
-			filemtime( AARDEX_COMPONENTS_PLUGIN_DIR . 'src/assets/style.css' )
+			filemtime( AARDEX_COMPONENTS_PLUGIN_DIR . 'src/style.css' )
 		);
 
 		wp_enqueue_style(

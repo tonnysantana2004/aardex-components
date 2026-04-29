@@ -69,7 +69,7 @@ class MegaMenuComponent {
 			}
 		}
 
-		require AARDEX_COMPONENTS_PLUGIN_DIR . '/src/components/li-first-level.php';
+		require AARDEX_COMPONENTS_PLUGIN_DIR . '/src/components/li-first-level/index.php';
 		return ob_get_clean();
 	}
 
@@ -81,7 +81,7 @@ class MegaMenuComponent {
 	public function pannel_template( $args ) { //phpcs:ignore
 
 		ob_start();
-		require AARDEX_COMPONENTS_PLUGIN_DIR . '/src/components/pannel.php';
+		require AARDEX_COMPONENTS_PLUGIN_DIR . '/src/components/pannel/index.php';
 		return ob_get_clean();
 	}
 }

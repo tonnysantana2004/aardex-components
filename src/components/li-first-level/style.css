@@ -1,0 +1,24 @@
+/* First Level Item  */
+.aardex-mega-menu--first_level-button {
+    min-height: var(--aardex-mega-menu-input-height);
+    width: 100%;
+    padding: 0;
+
+    font-family: "Lato", sans-serif;
+    font-weight: 700;
+    text-align: left;
+
+    background: transparent;
+
+    border: none;
+    border-bottom: solid 1px #E8E8E8;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    & svg {
+        stroke: #d9d9d9;
+    }
+
+}
