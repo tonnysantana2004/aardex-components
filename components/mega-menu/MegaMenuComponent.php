@@ -26,7 +26,6 @@ class MegaMenuComponent {
 	 */
 	public function render( $menu_items ) {
 
-		// $output  = '<div class="aardex-mega-menu--wrapper">';
 		$output = '<ul class="aardex-mega-menu">';
 
 		foreach ( $menu_items as $item ) {
@@ -34,7 +33,6 @@ class MegaMenuComponent {
 		}
 
 		$output .= '</ul>';
-		// $output .= '</div">';
 
 		return $output;
 	}
