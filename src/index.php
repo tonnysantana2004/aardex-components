@@ -7,7 +7,7 @@
 
 use AARDEX\MegaMenuComponent;
 
-require 'MegaMenuComponent.php';
+require AARDEX_COMPONENTS_PLUGIN_DIR . '/components/mega-menu/MegaMenuComponent.php';
 
 add_shortcode(
 	'mega_menu',
@@ -60,9 +60,9 @@ add_action(
 
 		wp_enqueue_style(
 			'aardex_components_styles',
-			AARDEX_COMPONENTS_PLUGIN_URL . 'src/style.css',
+			AARDEX_COMPONENTS_PLUGIN_URL . '/components/mega-menu/style.css',
 			array(),
-			filemtime( AARDEX_COMPONENTS_PLUGIN_DIR . 'src/style.css' )
+			filemtime( AARDEX_COMPONENTS_PLUGIN_DIR . '/components/mega-menu/style.css' )
 		);
 
 		wp_enqueue_style(

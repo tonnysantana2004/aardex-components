@@ -19,7 +19,11 @@ use Pannel;
  */
 class MegaMenuComponent {
 
-
+	/**
+	 * Render the mega menu component
+	 *
+	 * @param array $menu_items Array with the menu items options.
+	 */
 	public function render( $menu_items ) {
 
 		$output  = '<div class="aardex-mega-menu--wrapper">';
