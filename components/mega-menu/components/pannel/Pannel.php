@@ -8,23 +8,48 @@
  * @package AARDEX
  */
 
-// When clicking the back button just remove the class "open";
-// The id needs to be passed from the class.
-
 /**
  * Class for the component
  */
 class Pannel {
 
 	/**
-	 * Render the component
+	 * Items of the pannel
 	 *
-	 * @param array  $args Array with the item arguments.
-	 * @param string $inner_items String with the inner items rendered.
+	 * @var object[]
 	 */
-	public function render( $args, $inner_items ) {
+	public array $pannel_items;
 
-		ob_start();
+	/**
+	 * Arguments for the pannel
+	 *
+	 * @var array
+	 */
+	public array $args;
+
+	/**
+	 * Construct function
+	 *
+	 * @param array $args Array with the item arguments.
+	 */
+	public function __construct( $args ) {
+		$this->args = $args;
+	}
+
+	/**
+	 * Add new items to the pannel.
+	 *
+	 * @param object[] $new_items Array with list items objects.
+	 */
+	public function add_items( $new_items ) {
+		$this->pannel_items = $new_items;
+	}
+
+
+	/**
+	 * Render the component
+	 */
+	public function render() {
 
 		// Main Wrapper.
 		$output = '<li class="aardex-mega-menu--pannel open" id="unique123">';
@@ -44,17 +69,21 @@ class Pannel {
 		$output .= '<div class="aardex-mega-menu--pannel_content">';
 		$output .= '<ul class="aardex-mega-menu--children">';
 
-		if ( isset( $args['see_all_button'] ) ) {
+		if ( isset( $this->args['see_all_button'] ) ) {
 
 			$output .= '<li class="aardex-mega-menu--pannel_see_all">';
-			$output .= '<a href="' . $args['see_all_button']['link'] . '">';
-			$output .= $args['see_all_button']['label'];
+			$output .= '<a href="' . $this->args['see_all_button']['link'] . '">';
+			$output .= $this->args['see_all_button']['label'];
 			$output .= '</a>';
 			$output .= '</li>';
 		}
 
-		if ( ! empty( $inner_items ) ) {
-			$output .= $inner_items;
+		if ( ! empty( $this->pannel_items ) ) {
+
+			foreach ( $this->pannel_items as $item ) {
+				$output .= $item->render();
+
+			}
 		}
 
 		$output .= '</ul>';

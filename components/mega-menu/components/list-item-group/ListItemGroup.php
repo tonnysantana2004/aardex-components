@@ -8,21 +8,47 @@
  * @package AARDEX
  */
 
-// When clicking the back button just remove the class "open";
-// The id needs to be passed from the class.
-
 /**
  * Class for the component
  */
 class ListItemGroup {
 
 	/**
-	 * Render the component
+	 * Arguments for the menu item
 	 *
-	 * @param array  $args Array with the item arguments.
-	 * @param string $inner_items String with the inner items rendered.
+	 * @var array
 	 */
-	public function render( $args, $inner_items ) {
+	public array $args;
+
+	/**
+	 * Inner Items objects array
+	 *
+	 * @var ListItemSecondLevel[]
+	 */
+	public array $inner_items;
+
+	/**
+	 * Construct function
+	 *
+	 * @param array $args Array with the item arguments.
+	 */
+	public function __construct( $args ) {
+		$this->args = $args;
+	}
+
+	/**
+	 * Add the inner items.
+	 *
+	 * @param ListItemSecondLevel[] $new_items Inner items objects array.
+	 */
+	public function add_items( $new_items ) {
+		$this->inner_items = $new_items;
+	}
+
+	/**
+	 * Render the component
+	 */
+	public function render() {
 
 		// Main Wrapper.
 		$output = '<li class="aardex-mega-menu--list_item_group">';
@@ -33,14 +59,14 @@ class ListItemGroup {
 		// Button.
 		$output .= '<li class="aardex-mega-menu--list_item_group_label">';
 
-		$output .= $args['label'];
+		$output .= $this->args['label'];
 
 		$output .= '</li>';
 
-		if ( ! empty( $inner_items ) ) {
-
-			$output .= $inner_items;
-
+		if ( $this->inner_items !== null ) {
+			foreach ( $this->inner_items as $item ) {
+				$output .= $item->render();
+			}
 		}
 
 		$output .= '</ul>';

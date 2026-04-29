@@ -14,12 +14,41 @@
 class ListItemThirdLevel {
 
 	/**
-	 * Render the third level template
+	 * Arguments for the menu item
 	 *
-	 * @param array  $args Array with the item arguments.
-	 * @param string $inner_items String with the inner items rendered.
+	 * @var array
 	 */
-	public function render( $args, $inner_items ) {
+	public array $args;
+
+	/**
+	 * Pannel Object
+	 *
+	 * @var object
+	 */
+	public object $pannel;
+
+	/**
+	 * Construct function
+	 *
+	 * @param array $args Array with the item arguments.
+	 */
+	public function __construct( $args ) {
+		$this->args = $args;
+	}
+
+	/**
+	 * Add the inner pannel.
+	 *
+	 * @param object $pannel Pannel Object.
+	 */
+	public function add_pannel( $pannel ) {
+		$this->pannel = $pannel;
+	}
+
+	/**
+	 * Render the third level template
+	 */
+	public function render() {
 
 		// Main Wrapper.
 		$output = '<li class="aardex-mega-menu--third_level">';
@@ -31,14 +60,14 @@ class ListItemThirdLevel {
 		// Ignoring because I am not fetching any data from remote, but using it locally.
 		$output .= file_get_contents( __DIR__ . '/icon.svg' ); //phpcs:ignore
 
-		$output .= $args['label'];
+		$output .= $this->args['label'];
 
 		$output .= '</button>';
 
-		if ( ! empty( $inner_items ) ) {
+		if ( $this->pannel !== null ) {
 
 			$output .= '<ul class="aardex-mega-menu--children">';
-			$output .= $inner_items;
+			$output .= $this->pannel->render();
 			$output .= '</ul>';
 		}
 

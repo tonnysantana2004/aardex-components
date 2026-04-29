@@ -14,19 +14,48 @@
 class ListItemFirstLevel {
 
 	/**
-	 * Render the first level template
+	 * Arguments for the menu item
 	 *
-	 * @param array  $args Array with the item arguments.
-	 * @param string $inner_pannel String with the pannel rendered inner items.
+	 * @var array
 	 */
-	public function render( $args, $inner_pannel ) {
+	public array $args;
+
+	/**
+	 * Pannel Object
+	 *
+	 * @var object
+	 */
+	public object $pannel;
+
+	/**
+	 * Construct function
+	 *
+	 * @param array $args Array with the item arguments.
+	 */
+	public function __construct( $args ) {
+		$this->args = $args;
+	}
+
+	/**
+	 * Add the inner pannel.
+	 *
+	 * @param object $pannel Pannel Object.
+	 */
+	public function add_pannel( $pannel ) {
+		$this->pannel = $pannel;
+	}
+
+	/**
+	 * Render the first level template
+	 */
+	public function render() {
 
 		// Main Wrapper.
 		$output = '<li class="aardex-mega-menu--first_level">';
 
 		// Button.
 		$output .= '<button class="aardex-mega-menu--first_level_button" >';
-		$output .= $args['label'];
+		$output .= $this->args['label'];
 
 		// Icon.
 		// Ignoring because I am not fetching any data from remote, but using it locally.
@@ -34,10 +63,10 @@ class ListItemFirstLevel {
 
 		$output .= '</button>';
 
-		if ( ! empty( $inner_pannel ) ) {
+		if ( ! empty( $this->pannel ) ) {
 
 			$output .= '<ul class="aardex-mega-menu--children">';
-			$output .= $inner_pannel;
+			$output .= $this->pannel->render();
 			$output .= '</ul>';
 		}
 

@@ -13,7 +13,7 @@ class MobileHeader {
 	/**
 	 * Render the first level template
 	 */
-	public function render() {
+	public static function render() {
 
 		ob_start();
 

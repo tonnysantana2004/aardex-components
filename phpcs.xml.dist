@@ -27,6 +27,10 @@
         <severity>0</severity>
     </rule>
 
+    <rule ref="WordPress.PHP.YodaConditions">
+        <severity>0</severity>
+    </rule>
+
     <!-- Enforce escaping -->
     <rule ref="WordPress.Security.EscapeOutput" />
 

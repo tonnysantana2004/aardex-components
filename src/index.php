@@ -20,7 +20,7 @@ add_shortcode(
 			array(
 				'label'       => 'Solutions',
 				'type'        => 'first_level',
-				'pannel' =>array(
+				'pannel' => array(
 						'label'          => 'Panel for solutions',
 						'type'           => 'pannel',
 						'see_all_button' => array(
