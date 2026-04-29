@@ -9,6 +9,8 @@ use AARDEX\MegaMenuComponent;
 
 require AARDEX_COMPONENTS_PLUGIN_DIR . '/components/mega-menu/MegaMenuComponent.php';
 
+
+// TODO: Use a class to handle the components.
 add_shortcode(
 	'mega_menu',
 	function () {
