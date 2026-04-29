@@ -69,17 +69,20 @@ class FirstLevelItem {
 		$output .= '<button class="aardex-mega-menu--first_level_button" ' . $pannel_id_attribute . '>';
 		$output .= $this->label;
 
-		// Icon.
-		// Ignoring because I am not fetching any data from remote, but using it locally.
-		$output .= file_get_contents( AARDEX_COMPONENTS_PLUGIN_DIR . 'assets/components/mega-menu/svg/icon.svg' ); //phpcs:ignore
+		if ( $this->pannel !== null ) {
+			// Chevron.
+			// Ignoring because I am not fetching any data from remote, but using it locally.
+            $output .= file_get_contents( AARDEX_COMPONENTS_PLUGIN_DIR . 'assets/components/mega-menu/svg/chevron.svg' ); //phpcs:ignore
+		}
 
 		$output .= '</button>';
 
-		if ( ! empty( $this->pannel ) ) {
+		if ( $this->pannel !== null ) {
 
 			$output .= '<ul class="aardex-mega-menu--children">';
 			$output .= $this->pannel->render();
 			$output .= '</ul>';
+
 		}
 
 		$output .= '</li>';

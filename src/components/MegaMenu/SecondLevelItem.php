@@ -45,6 +45,8 @@ class SecondLevelItem {
 	 */
 	public function add_pannel( $pannel ) {
 		$this->pannel = $pannel;
+
+		return $this;
 	}
 
 	/**
@@ -55,18 +57,24 @@ class SecondLevelItem {
 		// Main Wrapper.
 		$output = '<li class="aardex-mega-menu--second_level">';
 
+		$pannel_id = $this->pannel?->pannel_id;
+
+		$pannel_id_attribute = $pannel_id ? ( 'data-pannel-id="' . $pannel_id . '"' ) : '';
+
 		// Button.
-		$output .= '<button class="aardex-mega-menu--second_level_button" >';
+		$output .= '<button class="aardex-mega-menu--second_level_button" ' . $pannel_id_attribute . ' >';
 
 		// Icon.
 		// Ignoring because I am not fetching any remote file.
-		$output .= '<span class="aardex-mega-menu--second_level_icon">' . file_get_contents( AARDEX_COMPONENTS_PLUGIN_DIR . 'assets/components/mega-menu/svg/icon.svg' ) . '</span>'; //phpcs:ignore
+		$output .= '<span class="aardex-mega-menu--second_level_icon">' . file_get_contents( AARDEX_COMPONENTS_PLUGIN_DIR . 'assets/components/mega-menu/svg/chevron.svg' ). '</span>'; //phpcs:ignore
 
 		$output .= $this->label;
 
-		// chevron.
-		// Ignoring because I am not fetching any data from remote, but using it locally.
-		$output .= file_get_contents( AARDEX_COMPONENTS_PLUGIN_DIR . 'assets/components/mega-menu/svg/chevron.svg' ); //phpcs:ignore
+		if ( $this->pannel !== null ) {
+			// Chevron.
+			// Ignoring because I am not fetching any data from remote, but using it locally.
+            $output .= file_get_contents( AARDEX_COMPONENTS_PLUGIN_DIR . 'assets/components/mega-menu/svg/chevron.svg' ); //phpcs:ignore
+		}
 
 		$output .= '</button>';
 

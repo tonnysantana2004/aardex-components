@@ -1,19 +1,24 @@
 .aardex-mega-menu--pannel {
     position: absolute;
     top: 0;
-    left: 0;
+    left: 100%;
     width: 100%;
     height: var(--aardex-mega-menu-content-height);
 
-    display:flex;
+    display: flex;
     flex-direction: column;
 
     background-color: var(--aardex-mega-menu-background);
+    pointer-events: none;
+    opacity: 0;
+
+    transition: opacity.2s, left .4s;
 
     /* When not open, hide and deactivate any click events */
-    &:not(.open) {
-        display: none;
-        pointer-events: none;
+    &.open {
+        left: 0%;
+        opacity: 1;
+        pointer-events: all !important;
     }
 
 }
@@ -34,7 +39,7 @@
     border: none;
     border-radius: 0;
     background: #E8E8E8;
-
+    outline:none;
     display: flex;
     justify-content: start;
     align-items: center;

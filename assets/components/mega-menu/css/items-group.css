@@ -18,20 +18,17 @@
     color:var(--aardex-mega-menu-gray-60);
     font-weight: 700;
     background:none;
-
-    position: relative;
-
     display: flex;
     flex-direction: column;
     align-items: start;
     gap:4px;
 
+}
 
-    &:after{
+.aardex-mega-menu--list_item_group_label:after{
         content:"";
         width:18px;
         height:1px;
         background:var(--aardex-mega-menu-primary-color);
         display:block;
     }
-}

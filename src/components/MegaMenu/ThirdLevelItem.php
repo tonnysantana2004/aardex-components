@@ -24,9 +24,9 @@ class ThirdLevelItem {
 	/**
 	 * Pannel Object
 	 *
-	 * @var object
+	 * @var Pannel
 	 */
-	public object $pannel;
+	public ?Pannel $pannel = null;
 
 	/**
 	 * Make Function
@@ -57,12 +57,16 @@ class ThirdLevelItem {
 		// Main Wrapper.
 		$output = '<li class="aardex-mega-menu--third_level">';
 
-		// Button.
-		$output .= '<button class="aardex-mega-menu--third_level_button" >';
+		$pannel_id = $this->pannel?->pannel_id;
 
-		// Chevron.
+		$pannel_id_attribute = $pannel_id ? ( 'data-pannel-id="' . $pannel_id . '"' ) : '';
+
+		// Button.
+		$output .= '<button class="aardex-mega-menu--third_level_button" ' . $pannel_id_attribute . ' >';
+
+		// chevron.
 		// Ignoring because I am not fetching any data from remote, but using it locally.
-		$output .= file_get_contents( __DIR__ . '/icon.svg' ); //phpcs:ignore
+		$output .= file_get_contents( AARDEX_COMPONENTS_PLUGIN_DIR . 'assets/components/mega-menu/svg/chevron.svg' ); //phpcs:ignore
 
 		$output .= $this->label;
 

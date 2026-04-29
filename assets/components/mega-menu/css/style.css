@@ -26,6 +26,15 @@
     overflow: hidden;
 }
 
+button {
+    cursor: pointer;
+
+    &:focus {
+
+        outline-color: #0072BF;
+    }
+}
+
 .aardex-mega-menu--wrapper {
     position: fixed;
     top: 0;
@@ -33,6 +42,7 @@
     width: var(--aardex-mega-menu-width);
     max-width: 100%;
     height: 100vh;
+    overflow: hidden;
 
     color: black;
     background-color: var(--aardex-mega-menu-background);

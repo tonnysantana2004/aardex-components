@@ -25,35 +25,56 @@ add_shortcode(
                 'label' => 'Panel for solutions',
                 'see_all_button' => [
                     'label' => 'See all solutions',
-                    'link'  => 'https://site.com',
+                    'link'  => '#',
                 ],
             ])
             ->add_items([
                 ItemsGroup::make('Technology')
-                    ->add_items([
-                        SecondLevelItem::make('MEMS Hardware Ecosystem')
-                            ->add_pannel(
-                                Pannel::make([
-                                    'label' => 'Panel for MEMS Hardware',
-                                    'see_all_button' => [
-                                        'label' => 'See all MEMS Hardware Ecosystem',
-                                        'link'  => 'https://site.com',
-                                    ],
-                                ])
-                                ->add_items([
-                                    ThirdLevelItem::make('Mems© Caps'),
-                                    ThirdLevelItem::make('CleverCap Lite®'),
-                                    ThirdLevelItem::make('Cerepak®'),
-                                    ThirdLevelItem::make('MEMS® HH'),
-                                    ThirdLevelItem::make('Injectapak®'),
-                                    ThirdLevelItem::make('Medose'),
-                                ])
-                            ),
+                ->add_items([
+                    SecondLevelItem::make('MEMS Hardware Ecosystem')
+                        ->add_pannel(
+                            Pannel::make([
+                                'label' => 'Panel for MEMS Hardware',
+                                'see_all_button' => [
+                                    'label' => 'See all MEMS Hardware Ecosystem',
+                                    'link'  => '#',
+                                ],
+                            ])
+                            ->add_items([
+                                ThirdLevelItem::make('Mems© Caps'),
+                                ThirdLevelItem::make('CleverCap Lite®'),
+                                ThirdLevelItem::make('Cerepak®'),
+                                ThirdLevelItem::make('MEMS® HH'),
+                                ThirdLevelItem::make('Injectapak®'),
+                                ThirdLevelItem::make('Medose'),
+                            ])
+                        ),
 
-                        SecondLevelItem::make('MEMS Adherence Software'),
-                        SecondLevelItem::make('MEMS Mobile'),
-                        SecondLevelItem::make('MEMS Intelligence'),
-                    ])
+                    SecondLevelItem::make('MEMS Adherence Software'),
+                    SecondLevelItem::make('MEMS Mobile'),
+                    SecondLevelItem::make('MEMS Intelligence'),
+                ]),
+                ItemsGroup::make('Services')
+                ->add_items([
+                    SecondLevelItem::make('Implementation in drug trials'),
+                    SecondLevelItem::make('Drug development optimisation'),
+                    SecondLevelItem::make('ROI evaluation'),
+                    SecondLevelItem::make('Data analysis and intelligence'),
+                ]),
+                ItemsGroup::make('Segments')
+                ->add_items([
+                    SecondLevelItem::make('Pharma'),
+                    SecondLevelItem::make('Biotechs'),
+                    SecondLevelItem::make('CROs'),
+                    SecondLevelItem::make('Academics'),
+                    SecondLevelItem::make('Investigators'),
+                ]),
+                ItemsGroup::make('Clinical Trials')
+                ->add_items([
+                    SecondLevelItem::make('Clin Ops & SaaS solutions'),
+                    SecondLevelItem::make('Clin Supply and Connected Devices'),
+                    SecondLevelItem::make('Quality and Compliance')
+                ]),
             ])
         ),
         FirstLevelItem::make('Therapeutic Areas'),

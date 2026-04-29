@@ -74,7 +74,7 @@ class Pannel {
 
 		// Icon.
 		// Ignoring because I am not fetching any data from remote, but using it locally.
-		$output .= file_get_contents( AARDEX_COMPONENTS_PLUGIN_DIR . 'assets/components/mega-menu/svg/icon.svg' ); //phpcs:ignore
+		$output .= file_get_contents( AARDEX_COMPONENTS_PLUGIN_DIR . 'assets/components/mega-menu/svg/arrow-left.svg' ); //phpcs:ignore
 
 		$output .= 'Back';
 
