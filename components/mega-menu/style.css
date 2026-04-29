@@ -1,3 +1,4 @@
+@import url('./components/li-third-level/style.css');
 @import url('./components/li-second-level/style.css');
 @import url('./components/li-first-level/style.css');
 @import url('./components/pannel/style.css');
@@ -17,6 +18,7 @@
     --aardex-mega-menu-gray-80: #484848;
     --aardex-mega-menu-gray-70: #707070;
     --aardex-mega-menu-gray-60: #888A8C;
+    --aardex-mega-menu-gray-40: #C6C6C6;
 
     --aardex-mega-menu-mobile-header-height: 96px;
     --aardex-mega-menu-content-height: calc(100vh - 96px);

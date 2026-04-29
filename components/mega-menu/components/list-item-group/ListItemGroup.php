@@ -24,8 +24,6 @@ class ListItemGroup {
 	 */
 	public function render( $args, $inner_items ) {
 
-		ob_start();
-
 		// Main Wrapper.
 		$output = '<li class="aardex-mega-menu--list_item_group">';
 

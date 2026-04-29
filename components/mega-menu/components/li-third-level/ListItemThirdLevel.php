@@ -1,6 +1,6 @@
 <?php
 /**
- * Second Level Button Template
+ * Third Level Button Template
  *
  * @param array $args Array with the template variables.
  * @param array $rendered_inner_items Array with the template variables.
@@ -11,10 +11,10 @@
 /**
  * Class for the component
  */
-class ListItemSecondLevel {
+class ListItemThirdLevel {
 
 	/**
-	 * Render the second level template
+	 * Render the third level template
 	 *
 	 * @param array  $args Array with the item arguments.
 	 * @param string $inner_items String with the inner items rendered.
@@ -22,21 +22,16 @@ class ListItemSecondLevel {
 	public function render( $args, $inner_items ) {
 
 		// Main Wrapper.
-		$output = '<li class="aardex-mega-menu--second_level">';
+		$output = '<li class="aardex-mega-menu--third_level">';
 
 		// Button.
-		$output .= '<button class="aardex-mega-menu--second_level_button" >';
-
-		// Icon.
-		// Ignoring because I am not fetching any data from remote, but using it locally.
-		$output .= '<span class="aardex-mega-menu--second_level_icon">' . file_get_contents( __DIR__ . '/icon.svg' ) . '</span>'; //phpcs:ignore
-
-		$output .= $args['label'];
-
+		$output .= '<button class="aardex-mega-menu--third_level_button" >';
 
 		// Chevron.
 		// Ignoring because I am not fetching any data from remote, but using it locally.
 		$output .= file_get_contents( __DIR__ . '/icon.svg' ); //phpcs:ignore
+
+		$output .= $args['label'];
 
 		$output .= '</button>';
 

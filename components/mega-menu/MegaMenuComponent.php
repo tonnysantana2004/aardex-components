@@ -9,14 +9,22 @@ namespace AARDEX;
 
 require __DIR__ . '/components/li-first-level/ListItemFirstLevel.php';
 require __DIR__ . '/components/li-second-level/ListItemSecondLevel.php';
+require __DIR__ . '/components/li-third-level/ListItemThirdLevel.php';
 require __DIR__ . '/components/list-item-group/ListItemGroup.php';
 require __DIR__ . '/components/pannel/Pannel.php';
 require __DIR__ . '/components/mobile-header/MobileHeader.php';
 use ListItemFirstLevel;
 use ListItemSecondLevel;
 use ListItemGroup;
+use ListItemThirdLevel;
 use MobileHeader;
 use Pannel;
+
+// abrir pagina do menu menu (via id)
+// Voltar pagina do menu (precisa herdar o id do menu pai)
+// apenas um menu aberto por vez
+// opção para link no item do menu
+// se tiver inner items não carregar o link.
 
 /**
  * Class that handle the rendering of the entire component.
@@ -56,7 +64,8 @@ class MegaMenuComponent {
 	 */
 	public function render_menu_item( $args ) {
 
-		$output = '';
+		$output                = '';
+		$rendered_inner_pannel = '';
 
 		$rendered_inner_items = '';
 
@@ -66,10 +75,14 @@ class MegaMenuComponent {
 			}
 		}
 
+		if ( isset( $args['pannel'] ) ) {
+			$rendered_inner_pannel .= $this->render_menu_item( $args['pannel'] );
+		}
+
 		switch ( $args['type'] ) {
 
 			case 'first_level':
-				$output = ( new ListItemFirstLevel() )->render( $args, $rendered_inner_items );
+				$output = ( new ListItemFirstLevel() )->render( $args, $rendered_inner_pannel );
 				break;
 
 			case 'pannel':
@@ -81,6 +94,9 @@ class MegaMenuComponent {
 				break;
 			case 'second_level':
 				$output = ( new ListItemSecondLevel() )->render( $args, $rendered_inner_items );
+				break;
+			case 'third_level':
+				$output = ( new ListItemThirdLevel() )->render( $args, $rendered_inner_items );
 				break;
 		}
 

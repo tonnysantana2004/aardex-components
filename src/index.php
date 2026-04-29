@@ -20,9 +20,8 @@ add_shortcode(
 			array(
 				'label'       => 'Solutions',
 				'type'        => 'first_level',
-				'inner_items' => array(
-					array(
-						'label'          => 'Panel 1',
+				'pannel' =>array(
+						'label'          => 'Panel for solutions',
 						'type'           => 'pannel',
 						'see_all_button' => array(
 							'label' => 'See all solutions',
@@ -36,6 +35,42 @@ add_shortcode(
                                     array(
                                         'label' => 'MEMS Hardware Ecosystem ',
                                         'type'  => 'second_level',
+                                        'inner_items' => array(
+                                            array(
+                                                'label'          => 'Panel for MEMS Hardware',
+                                                'type'           => 'pannel',
+                                                'see_all_button' => array(
+                                                    'label' => 'See all MEMS Hardware Ecosystem ',
+                                                    'link'  => 'https://site.com',
+                                                ),
+                                                'inner_items' => array(
+                                                    array(
+                                                        'label' => 'Mems© Caps',
+                                                        'type'  => 'third_level',
+                                                    ),
+                                                    array(
+                                                        'label' => 'CleverCap Lite®',
+                                                        'type'  => 'third_level',
+                                                    ),
+                                                    array(
+                                                        'label' => 'Cerepak®',
+                                                        'type'  => 'third_level',
+                                                    ),
+                                                    array(
+                                                        'label' => 'MEMS® HH​',
+                                                        'type'  => 'third_level',
+                                                    ),
+                                                    array(
+                                                        'label' => 'Injectapak®',
+                                                        'type'  => 'third_level',
+                                                    ),
+                                                    array(
+                                                        'label' => 'Medose',
+                                                        'type'  => 'third_level',
+                                                    ),
+                                                )
+                                            )
+                                        )
                                     ),
                                     array(
                                         'label' => 'MEMS Adherence Software ',
@@ -53,7 +88,6 @@ add_shortcode(
                             ),
                         )
 					),
-				),
 			),
 			array(
 				'label' => 'Therapeutic Areas',

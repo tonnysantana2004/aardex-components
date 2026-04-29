@@ -17,9 +17,9 @@ class ListItemFirstLevel {
 	 * Render the first level template
 	 *
 	 * @param array  $args Array with the item arguments.
-	 * @param string $inner_items String with the inner items rendered.
+	 * @param string $inner_pannel String with the pannel rendered inner items.
 	 */
-	public function render( $args, $inner_items ) {
+	public function render( $args, $inner_pannel ) {
 
 		// Main Wrapper.
 		$output = '<li class="aardex-mega-menu--first_level">';
@@ -34,10 +34,10 @@ class ListItemFirstLevel {
 
 		$output .= '</button>';
 
-		if ( ! empty( $inner_items ) ) {
+		if ( ! empty( $inner_pannel ) ) {
 
 			$output .= '<ul class="aardex-mega-menu--children">';
-			$output .= $inner_items;
+			$output .= $inner_pannel;
 			$output .= '</ul>';
 		}
 
