@@ -8,41 +8,49 @@
  * @package AARDEX
  */
 
+namespace AARDEX\Components\MegaMenu;
+
 /**
  * Class for the component
  */
-class ListItemFirstLevel {
+class FirstLevelItem {
 
 	/**
 	 * Arguments for the menu item
 	 *
-	 * @var array
+	 * @var string
 	 */
-	public array $args;
+	public $label;
 
 	/**
 	 * Pannel Object
 	 *
 	 * @var object
 	 */
-	public object $pannel;
+	public $pannel;
 
 	/**
-	 * Construct function
+	 * Make Class.
 	 *
-	 * @param array $args Array with the item arguments.
+	 * @param string $label String with the item label.
 	 */
-	public function __construct( $args ) {
-		$this->args = $args;
+	public static function make( $label ): FirstLevelItem {
+
+		$instance        = new self();
+		$instance->label = $label;
+
+		return $instance;
 	}
 
 	/**
 	 * Add the inner pannel.
 	 *
-	 * @param object $pannel Pannel Object.
+	 * @param Pannel $pannel Pannel Object.
 	 */
 	public function add_pannel( $pannel ) {
 		$this->pannel = $pannel;
+
+		return $this;
 	}
 
 	/**
@@ -53,13 +61,17 @@ class ListItemFirstLevel {
 		// Main Wrapper.
 		$output = '<li class="aardex-mega-menu--first_level">';
 
+		$pannel_id = $this->pannel?->pannel_id;
+
+		$pannel_id_attribute = $pannel_id ? ( 'data-pannel-id="' . $pannel_id . '"' ) : '';
+
 		// Button.
-		$output .= '<button class="aardex-mega-menu--first_level_button" >';
-		$output .= $this->args['label'];
+		$output .= '<button class="aardex-mega-menu--first_level_button" ' . $pannel_id_attribute . '>';
+		$output .= $this->label;
 
 		// Icon.
 		// Ignoring because I am not fetching any data from remote, but using it locally.
-		$output .= file_get_contents( __DIR__ . '/icon.svg' ); //phpcs:ignore
+		$output .= file_get_contents( AARDEX_COMPONENTS_PLUGIN_DIR . 'assets/components/mega-menu/svg/icon.svg' ); //phpcs:ignore
 
 		$output .= '</button>';
 

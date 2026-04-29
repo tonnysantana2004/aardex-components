@@ -8,41 +8,47 @@
  * @package AARDEX
  */
 
+namespace AARDEX\Components\MegaMenu;
+
 /**
  * Class for the component
  */
-class ListItemGroup {
+class ItemsGroup {
 
 	/**
-	 * Arguments for the menu item
+	 * Label for the menu item
 	 *
-	 * @var array
+	 * @var string
 	 */
-	public array $args;
+	public string $label;
 
 	/**
 	 * Inner Items objects array
 	 *
-	 * @var ListItemSecondLevel[]
+	 * @var SecondLevelItem[]
 	 */
 	public array $inner_items;
 
 	/**
-	 * Construct function
+	 * Make Function
 	 *
-	 * @param array $args Array with the item arguments.
+	 * @param string $label String with the item name.
 	 */
-	public function __construct( $args ) {
-		$this->args = $args;
+	public static function make( $label ) {
+		$instance        = new self();
+		$instance->label = $label;
+
+		return $instance;
 	}
 
 	/**
 	 * Add the inner items.
 	 *
-	 * @param ListItemSecondLevel[] $new_items Inner items objects array.
+	 * @param SecondLevelItem[] $new_items Inner items objects array.
 	 */
 	public function add_items( $new_items ) {
 		$this->inner_items = $new_items;
+		return $this;
 	}
 
 	/**
@@ -59,13 +65,13 @@ class ListItemGroup {
 		// Button.
 		$output .= '<li class="aardex-mega-menu--list_item_group_label">';
 
-		$output .= $this->args['label'];
+		$output .= $this->label;
 
 		$output .= '</li>';
 
 		if ( $this->inner_items !== null ) {
 			foreach ( $this->inner_items as $item ) {
-				$output .= $item->render();
+				$output .= $item?->render();
 			}
 		}
 

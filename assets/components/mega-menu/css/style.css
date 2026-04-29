@@ -1,9 +1,9 @@
-@import url('./components/li-third-level/style.css');
-@import url('./components/li-second-level/style.css');
-@import url('./components/li-first-level/style.css');
-@import url('./components/pannel/style.css');
-@import url('./components/mobile-header/style.css');
-@import url('./components/list-item-group/style.css');
+@import url('./third-level-item.css');
+@import url('./second-level-item.css');
+@import url('./first-level-item.css');
+@import url('./pannel.css');
+@import url('./mobile-header.css');
+@import url('./items-group.css');
 
 :root {
     --aardex-mega-menu-width: 375px;
@@ -48,7 +48,7 @@ ul.aardex-mega-menu {
 
     /* Sizings */
     font-size: var(--aardex-mega-menu-font-size);
-    
+
     /* 2 pixels just to show the outline, but it is not on the figma layout */
     padding: 2px var(--aardex-mega-menu-space-section-horizontal);
 

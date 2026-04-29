@@ -5,32 +5,37 @@
  * @package AARDEX
  */
 
+namespace AARDEX\Components\MegaMenu;
+
 /**
  * Class for the component
  */
-class ListItemSecondLevel {
+class SecondLevelItem {
 
 	/**
-	 * Arguments for the menu item
+	 * Label for the menu item
 	 *
-	 * @var array
+	 * @var string
 	 */
-	public array $args;
+	public string $label;
 
 	/**
 	 * Pannel Object
 	 *
-	 * @var object
+	 * @var Pannel
 	 */
-	public object $pannel;
+	public ?Pannel $pannel = null;
 
 	/**
-	 * Construct function
+	 * Make Function
 	 *
-	 * @param array $args Array with the item arguments.
+	 * @param string $label String with the item name.
 	 */
-	public function __construct( $args ) {
-		$this->args = $args;
+	public static function make( $label ) {
+		$instance        = new self();
+		$instance->label = $label;
+
+		return $instance;
 	}
 
 	/**
@@ -55,13 +60,13 @@ class ListItemSecondLevel {
 
 		// Icon.
 		// Ignoring because I am not fetching any remote file.
-		$output .= '<span class="aardex-mega-menu--second_level_icon">' . file_get_contents( __DIR__ . '/icon.svg' ) . '</span>'; //phpcs:ignore
+		$output .= '<span class="aardex-mega-menu--second_level_icon">' . file_get_contents( AARDEX_COMPONENTS_PLUGIN_DIR . 'assets/components/mega-menu/svg/icon.svg' ) . '</span>'; //phpcs:ignore
 
-		$output .= $this->args['label'];
+		$output .= $this->label;
 
-		// Chevron.
-		// Ignoring because I am not fetching any remote file.
-		$output .= file_get_contents( __DIR__ . '/icon.svg' ); //phpcs:ignore
+		// chevron.
+		// Ignoring because I am not fetching any data from remote, but using it locally.
+		$output .= file_get_contents( AARDEX_COMPONENTS_PLUGIN_DIR . 'assets/components/mega-menu/svg/chevron.svg' ); //phpcs:ignore
 
 		$output .= '</button>';
 

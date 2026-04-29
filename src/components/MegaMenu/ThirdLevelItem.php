@@ -8,17 +8,18 @@
  * @package AARDEX
  */
 
+namespace AARDEX\Components\MegaMenu;
+
 /**
  * Class for the component
  */
-class ListItemThirdLevel {
-
+class ThirdLevelItem {
 	/**
-	 * Arguments for the menu item
+	 * Label for the menu item
 	 *
-	 * @var array
+	 * @var string
 	 */
-	public array $args;
+	public string $label;
 
 	/**
 	 * Pannel Object
@@ -28,12 +29,15 @@ class ListItemThirdLevel {
 	public object $pannel;
 
 	/**
-	 * Construct function
+	 * Make Function
 	 *
-	 * @param array $args Array with the item arguments.
+	 * @param string $label String with the item name.
 	 */
-	public function __construct( $args ) {
-		$this->args = $args;
+	public static function make( $label ) {
+		$instance        = new self();
+		$instance->label = $label;
+
+		return $instance;
 	}
 
 	/**
@@ -60,7 +64,7 @@ class ListItemThirdLevel {
 		// Ignoring because I am not fetching any data from remote, but using it locally.
 		$output .= file_get_contents( __DIR__ . '/icon.svg' ); //phpcs:ignore
 
-		$output .= $this->args['label'];
+		$output .= $this->label;
 
 		$output .= '</button>';
 

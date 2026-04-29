@@ -5,12 +5,7 @@
  * @package AARDREX
  */
 
-namespace AARDEX;
-
-require __DIR__ . '/components/li-first-level/ListItemFirstLevel.php';
-require __DIR__ . '/components/mobile-header/MobileHeader.php';
-use ListItemFirstLevel;
-use MobileHeader;
+namespace AARDEX\Components\MegaMenu;
 
 // abrir pagina do menu menu (via id)
 // Voltar pagina do menu (precisa herdar o id do menu pai)
@@ -25,27 +20,35 @@ use MobileHeader;
  */
 class MegaMenuComponent {
 
-
 	/**
 	 * Items of the menu
 	 *
-	 * @var ListItemFirstLevel[]
+	 * @var FirstLevelItem[]
 	 */
-	public array $first_level_items;
+	public array $first_level_items = array();
+
+	/**
+	 * Make Class.
+	 */
+	public static function make(): MegaMenuComponent {
+		$instance = new self();
+		return $instance;
+	}
 
 	/**
 	 * Add new items to the menu.
 	 *
-	 * @param ListItemFirstLevel[] $new_items Array with list items.
+	 * @param FirstLevelItem[] $new_items Array with list items.
 	 */
 	public function add_items( $new_items ) {
 		$this->first_level_items = $new_items;
+		return $this;
 	}
 
 	/**
 	 * Render the mega menu component
 	 */
-	public function render() {
+	public function render(): string {
 
 		// This wrapper its used to set the height and position of the menu, nothing else.
 		$output = '<div class="aardex-mega-menu--wrapper">';
@@ -54,12 +57,8 @@ class MegaMenuComponent {
 
 		$output .= '<ul class="aardex-mega-menu">';
 
-		if ( $this->first_level_items !== null ) {
-
-			foreach ( $this->first_level_items as $item ) {
-				$output .= $item->render();
-
-			}
+		foreach ( $this->first_level_items as $item ) {
+			$output .= $item?->render();
 		}
 
 		$output .= '</ul>';

@@ -8,6 +8,8 @@
  * @package AARDEX
  */
 
+namespace AARDEX\Components\MegaMenu;
+
 /**
  * Class for the component
  */
@@ -22,18 +24,30 @@ class Pannel {
 
 	/**
 	 * Arguments for the pannel
+	 * TODO: Extract args to variables
 	 *
 	 * @var array
 	 */
 	public array $args;
 
 	/**
-	 * Construct function
+	 * Panel unique ID
 	 *
-	 * @param array $args Array with the item arguments.
+	 * @var string
 	 */
-	public function __construct( $args ) {
-		$this->args = $args;
+	public string $pannel_id = '';
+
+	/**
+	 * Make Function
+	 *
+	 * @param array $args Array with the arguments.
+	 */
+	public static function make( $args ) {
+		$instance           = new self();
+		$instance->args     = $args;
+		$instance->pannel_id = wp_unique_id( 'aardex-mega-menu-pannel-' );
+
+		return $instance;
 	}
 
 	/**
@@ -43,6 +57,7 @@ class Pannel {
 	 */
 	public function add_items( $new_items ) {
 		$this->pannel_items = $new_items;
+		return $this;
 	}
 
 
@@ -52,14 +67,14 @@ class Pannel {
 	public function render() {
 
 		// Main Wrapper.
-		$output = '<li class="aardex-mega-menu--pannel open" id="unique123">';
+		$output = '<li class="aardex-mega-menu--pannel " id="' . $this->pannel_id . '">';
 
 		// Button.
-		$output .= '<button class="aardex-mega-menu--pannel_back_button" data-aardex-panel-id="unique123">';
+		$output .= '<button class="aardex-mega-menu--pannel_back_button" data-pannel-id="' . $this->pannel_id . '">';
 
 		// Icon.
 		// Ignoring because I am not fetching any data from remote, but using it locally.
-		$output .= file_get_contents( __DIR__ . '/icon.svg' ); //phpcs:ignore
+		$output .= file_get_contents( AARDEX_COMPONENTS_PLUGIN_DIR . 'assets/components/mega-menu/svg/icon.svg' ); //phpcs:ignore
 
 		$output .= 'Back';
 

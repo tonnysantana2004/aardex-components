@@ -5,111 +5,64 @@
  * @package AARDEX
  */
 
-use AARDEX\MegaMenuComponent;
-
-require AARDEX_COMPONENTS_PLUGIN_DIR . '/components/mega-menu/MegaMenuComponent.php';
-
+use AARDEX\Components\MegaMenu\FirstLevelItem;
+use AARDEX\Components\MegaMenu\ItemsGroup;
+use AARDEX\Components\MegaMenu\MegaMenuComponent;
+use AARDEX\Components\MegaMenu\Pannel;
+use AARDEX\Components\MegaMenu\SecondLevelItem;
+use AARDEX\Components\MegaMenu\ThirdLevelItem;
 
 // TODO: Use a class to handle the components.
 add_shortcode(
 	'mega_menu',
 	function () {
 
-		$menu_items = array(
-
-			array(
-				'label'       => 'Solutions',
-				'type'        => 'first_level',
-				'pannel' => array(
-						'label'          => 'Panel for solutions',
-						'type'           => 'pannel',
-						'see_all_button' => array(
-							'label' => 'See all solutions',
-							'link'  => 'https://site.com',
-						),
-                        'inner_items' => array(
-                            array(
-                                'label' => 'Technology',
-                                'type'  => 'list_item_group',
-                                'inner_items' => array(
-                                    array(
-                                        'label' => 'MEMS Hardware Ecosystem ',
-                                        'type'  => 'second_level',
-                                        'inner_items' => array(
-                                            array(
-                                                'label'          => 'Panel for MEMS Hardware',
-                                                'type'           => 'pannel',
-                                                'see_all_button' => array(
-                                                    'label' => 'See all MEMS Hardware Ecosystem ',
-                                                    'link'  => 'https://site.com',
-                                                ),
-                                                'inner_items' => array(
-                                                    array(
-                                                        'label' => 'Mems© Caps',
-                                                        'type'  => 'third_level',
-                                                    ),
-                                                    array(
-                                                        'label' => 'CleverCap Lite®',
-                                                        'type'  => 'third_level',
-                                                    ),
-                                                    array(
-                                                        'label' => 'Cerepak®',
-                                                        'type'  => 'third_level',
-                                                    ),
-                                                    array(
-                                                        'label' => 'MEMS® HH​',
-                                                        'type'  => 'third_level',
-                                                    ),
-                                                    array(
-                                                        'label' => 'Injectapak®',
-                                                        'type'  => 'third_level',
-                                                    ),
-                                                    array(
-                                                        'label' => 'Medose',
-                                                        'type'  => 'third_level',
-                                                    ),
-                                                )
-                                            )
-                                        )
-                                    ),
-                                    array(
-                                        'label' => 'MEMS Adherence Software ',
-                                        'type'  => 'second_level',
-                                    ),
-                                    array(
-                                        'label' => 'MEMS Mobile ',
-                                        'type'  => 'second_level',
-                                    ),
-                                    array(
-                                        'label' => 'MEMS Intelligence',
-                                        'type'  => 'second_level',
-                                    ),
-                                )
+		$menu = MegaMenuComponent::make()
+        ->add_items([
+        FirstLevelItem::make('Solutions')
+        ->add_pannel(
+            Pannel::make([
+                'label' => 'Panel for solutions',
+                'see_all_button' => [
+                    'label' => 'See all solutions',
+                    'link'  => 'https://site.com',
+                ],
+            ])
+            ->add_items([
+                ItemsGroup::make('Technology')
+                    ->add_items([
+                        SecondLevelItem::make('MEMS Hardware Ecosystem')
+                            ->add_pannel(
+                                Pannel::make([
+                                    'label' => 'Panel for MEMS Hardware',
+                                    'see_all_button' => [
+                                        'label' => 'See all MEMS Hardware Ecosystem',
+                                        'link'  => 'https://site.com',
+                                    ],
+                                ])
+                                ->add_items([
+                                    ThirdLevelItem::make('Mems© Caps'),
+                                    ThirdLevelItem::make('CleverCap Lite®'),
+                                    ThirdLevelItem::make('Cerepak®'),
+                                    ThirdLevelItem::make('MEMS® HH'),
+                                    ThirdLevelItem::make('Injectapak®'),
+                                    ThirdLevelItem::make('Medose'),
+                                ])
                             ),
-                        )
-					),
-			),
-			array(
-				'label' => 'Therapeutic Areas',
-				'type'  => 'first_level',
-			),
-			array(
-				'label' => 'Resources',
-				'type'  => 'first_level',
-			),
-			array(
-				'label' => 'About',
-				'type'  => 'first_level',
-			),
-			array(
-				'label' => 'Contact',
-				'type'  => 'first_level',
-			)
-		);
 
-		$output = new MegaMenuComponent();
+                        SecondLevelItem::make('MEMS Adherence Software'),
+                        SecondLevelItem::make('MEMS Mobile'),
+                        SecondLevelItem::make('MEMS Intelligence'),
+                    ])
+            ])
+        ),
+        FirstLevelItem::make('Therapeutic Areas'),
+        FirstLevelItem::make('Resources'),
+        FirstLevelItem::make('About'),
+        FirstLevelItem::make('Contact'),
+        ]);
 
-		return $output->render( $menu_items );
+		return $menu->render();
 	}
 );
 
@@ -120,9 +73,17 @@ add_action(
 
 		wp_enqueue_style(
 			'aardex_components_styles',
-			AARDEX_COMPONENTS_PLUGIN_URL . '/components/mega-menu/style.css',
+			AARDEX_COMPONENTS_PLUGIN_URL . 'assets/components/mega-menu/css/style.css',
 			array(),
-			filemtime( AARDEX_COMPONENTS_PLUGIN_DIR . '/components/mega-menu/style.css' )
+			filemtime( AARDEX_COMPONENTS_PLUGIN_DIR . 'assets/components/mega-menu/css/style.css' )
+		);
+
+        wp_enqueue_script(
+			'aardex_components_script',
+			AARDEX_COMPONENTS_PLUGIN_URL . 'assets/components/mega-menu/js/script.js',
+			array(),
+			filemtime( AARDEX_COMPONENTS_PLUGIN_DIR . 'assets/components/mega-menu/js/script.js' ),
+            true
 		);
 
 		wp_enqueue_style(
