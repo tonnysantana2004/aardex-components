@@ -19,15 +19,15 @@ class Pannel {
 	/**
 	 * Render the component
 	 *
-	 * @param array $args Array with the item arguments.
-	 * @param array $inner_items Array with the inner items rendered.
+	 * @param array  $args Array with the item arguments.
+	 * @param string $inner_items String with the inner items rendered.
 	 */
 	public function render( $args, $inner_items ) {
 
 		ob_start();
 
 		// Main Wrapper.
-		$output = '<div class="aardex-mega-menu--pannel" id="unique123">';
+		$output = '<li class="aardex-mega-menu--pannel" id="unique123">';
 
 		// Button.
 		$output .= '<button class="aardex-mega-menu--pannel_back_button" data-aardex-panel-id="unique123">';
@@ -41,8 +41,7 @@ class Pannel {
 		$output .= '</button>';
 
 		// Content.
-		$output .= '<div class="aardex-mega-menu--pannel-content">';
-		$output .= '<ul>';
+		$output .= '<ul class="aardex-mega-menu--children aardex-mega-menu--pannel-content">';
 
 		if ( isset( $args['see_all_button'] ) ) {
 
@@ -53,18 +52,13 @@ class Pannel {
 			$output .= '</li>';
 		}
 
-		$output .= '</ul>';
-		$output .= '</div>';
+		if ( empty( $inner_items ) ) {
+			$output .= $inner_items;
+		}
 
-		/**
-		 *
-		 * Remover Depois
-		 * if ( empty( $inner_items ) ) {
-		 * $output .= '<div class="aardex-mega-menu--children">';
-		 * $output .= $inner_items;
-		 * $output .= '</div';}
-		 * $output .= '</li>';
-		 */
+		$output .= '</ul>';
+		$output .= '</li>';
+
 		return $output;
 	}
 }

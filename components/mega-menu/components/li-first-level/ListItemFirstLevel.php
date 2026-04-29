@@ -38,9 +38,9 @@ class ListItemFirstLevel {
 
 		if ( ! empty( $inner_items ) ) {
 
-			$output .= '<div class="aardex-mega-menu--children open">';
+			$output .= '<ul class="aardex-mega-menu--children">';
 			$output .= $inner_items;
-			$output .= '</div';
+			$output .= '</ul>';
 		}
 
 		$output .= '</li>';
