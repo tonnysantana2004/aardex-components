@@ -41,12 +41,24 @@ add_shortcode(
                                 ],
                             ])
                             ->add_items([
-                                ThirdLevelItem::make('Mems© Caps'),
-                                ThirdLevelItem::make('CleverCap Lite®'),
-                                ThirdLevelItem::make('Cerepak®'),
-                                ThirdLevelItem::make('MEMS® HH'),
-                                ThirdLevelItem::make('Injectapak®'),
-                                ThirdLevelItem::make('Medose'),
+                                ItemsGroup::make()
+                                ->add_items([
+                                    ThirdLevelItem::make('Mems© Caps'),
+                                    ThirdLevelItem::make('CleverCap Lite®'),
+                                    ThirdLevelItem::make('Cerepak®'),
+                                    ThirdLevelItem::make('MEMS® HH'),
+                                    ThirdLevelItem::make('Injectapak®'),
+                                    ThirdLevelItem::make('Medose'),
+                                ]),
+                                ItemsGroup::make()
+                                ->add_items([
+                                    ThirdLevelItem::make('Mems© Caps'),
+                                    ThirdLevelItem::make('CleverCap Lite®'),
+                                    ThirdLevelItem::make('Cerepak®'),
+                                    ThirdLevelItem::make('MEMS® HH'),
+                                    ThirdLevelItem::make('Injectapak®'),
+                                    ThirdLevelItem::make('Medose'),
+                                ]),
                             ])
                         ),
 

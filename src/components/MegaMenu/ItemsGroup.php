@@ -20,7 +20,7 @@ class ItemsGroup {
 	 *
 	 * @var string
 	 */
-	public string $label;
+	public ?string $label;
 
 	/**
 	 * Inner Items objects array
@@ -34,7 +34,7 @@ class ItemsGroup {
 	 *
 	 * @param string $label String with the item name.
 	 */
-	public static function make( $label ) {
+	public static function make( $label = null ) {
 		$instance        = new self();
 		$instance->label = $label;
 
@@ -62,12 +62,15 @@ class ItemsGroup {
 		// Content.
 		$output .= '<ul class="aardex-mega-menu--children">';
 
-		// Button.
-		$output .= '<li class="aardex-mega-menu--list_item_group_label">';
+		if ( $this->label !== null ) {
 
-		$output .= $this->label;
+			// label.
+			$output .= '<li class="aardex-mega-menu--list_item_group_label">';
 
-		$output .= '</li>';
+			$output .= $this->label;
+
+			$output .= '</li>';
+		}
 
 		if ( $this->inner_items !== null ) {
 			foreach ( $this->inner_items as $item ) {
