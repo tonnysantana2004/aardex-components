@@ -51,7 +51,7 @@ class MegaMenuComponent {
 	public function render(): string {
 
 		// This wrapper its used to set the height and position of the menu, nothing else.
-		$output = '<div class="aardex-mega-menu--wrapper">';
+		$output = '<nav class="aardex-mega-menu--wrapper">';
 
 		$output .= MobileHeader::render();
 
@@ -62,7 +62,7 @@ class MegaMenuComponent {
 		}
 
 		$output .= '</ul>';
-		$output .= '</div>';
+		$output .= '</nav>';
 
 		return $output;
 	}

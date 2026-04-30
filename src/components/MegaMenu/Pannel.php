@@ -81,7 +81,6 @@ class Pannel {
 		$output .= '</button>';
 
 		// Content.
-		$output .= '<div class="aardex-mega-menu--pannel_content">';
 		$output .= '<ul class="aardex-mega-menu--children">';
 
 		if ( isset( $this->args['see_all_button'] ) ) {
@@ -102,7 +101,6 @@ class Pannel {
 		}
 
 		$output .= '</ul>';
-		$output .= '</div>';
 
 		$output .= '</li>';
 
