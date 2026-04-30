@@ -54,6 +54,10 @@
             padding: 32px var(--aardex-mega-menu-space-section-horizontal);
             margin: 0;
             list-style: none;
+
+            &>div.aardex-mega-menu--vertical-spacing {
+                display: none;
+            }
         }
 
         &>ul .aardex-mega-menu--pannel_see_all a {
@@ -72,36 +76,64 @@
 @media screen and (min-width:1024px) {
 
     .aardex-mega-menu--pannel {
-        position: absolute;
+        position: absolute !important;
         width: 1200px;
+        box-sizing: border-box;
         max-width: 90vw;
-        top: 72px;
         left: 50%;
         transform: translateX(-50%);
-        box-shadow: 0px 2px 20px 0px #0046761A;
-        border-radius: 24px;
+
+        height: 100%;
         padding: 32px;
         list-style: none;
+        background: white;
+        top: 0;
+
+        /* Only the first pannel, because the inner ones will be relative to it. */
+        &#aardex-mega-menu-pannel-1 {
+            top: 72px;
+            box-shadow: 0px 2px 20px 0px #0046761A;
+            border-radius: 24px;
+            background: #f8f8f8;
+            border: solid 1px white;
+            overflow: hidden;
+            height: fit-content;
+
+            &>.aardex-mega-menu--pannel_back_button {
+                display: none;
+            }
+        }
 
         &:not(.open) {
             display: none;
         }
 
-        & .aardex-mega-menu--pannel_back_button {
-            display: none;
-        }
 
         &>ul {
             list-style: none;
             margin: 0;
             padding: 0;
 
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
 
             &>li.aardex-mega-menu--pannel_see_all {
                 order: 1;
-                grid-column: span 4;
+                font-size: 16px;
+                width: 100%;
+                text-align: center;
+
+                & a {
+
+                    color: #707070;
+                }
+            }
+
+            &>div.aardex-mega-menu--vertical-spacing {
+                width: 1px;
+                background-color: #E8E8E8;
             }
         }
     }

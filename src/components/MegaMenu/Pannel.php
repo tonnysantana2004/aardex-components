@@ -43,8 +43,8 @@ class Pannel {
 	 * @param array $args Array with the arguments.
 	 */
 	public static function make( $args ) {
-		$instance           = new self();
-		$instance->args     = $args;
+		$instance            = new self();
+		$instance->args      = $args;
 		$instance->pannel_id = wp_unique_id( 'aardex-mega-menu-pannel-' );
 
 		return $instance;
@@ -94,9 +94,17 @@ class Pannel {
 
 		if ( ! empty( $this->pannel_items ) ) {
 
+			$i = 0;
+
 			foreach ( $this->pannel_items as $item ) {
 				$output .= $item->render();
 
+				++$i;
+
+				if ( count( $this->pannel_items ) !== $i ) {
+
+					$output .= '<div class="aardex-mega-menu--vertical-spacing"></div>';
+				}
 			}
 		}
 

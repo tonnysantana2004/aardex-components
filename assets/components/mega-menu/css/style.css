@@ -94,6 +94,7 @@
 
     .aardex-mega-menu {
         margin: 0;
+        font-family: 'Lato';
 
         height: 46px;
         position: relative;
@@ -109,6 +110,10 @@
         border: solid 1px #F8F8F8;
         border-radius: 100px;
         box-shadow: 0px 2px 20px 0px #0046761A;
+
+        & * {
+            position: static;
+        }
     }
 
 }
