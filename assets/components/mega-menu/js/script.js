@@ -10,6 +10,12 @@ function changePannel(pannel_id) {
 
 }
 
+function toogleMenu() {
+
+    document.querySelector('.aardex-mega-menu--wrapper').classList.toggle('open');
+
+}
+
 document.addEventListener('DOMContentLoaded', () => {
 
     const pannelButtons = document.querySelectorAll('[data-pannel-id]');
@@ -24,4 +30,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     });
 
+    const toogleMenuButtons = document.querySelectorAll('.aardex-mega-menu--toggle-button')
+
+    toogleMenuButtons.forEach(button => {
+
+        button.addEventListener('click', (e) => {
+
+            toogleMenu()
+
+        })
+
+    });
 })
