@@ -26,6 +26,10 @@
     overflow: hidden;
 }
 
+.aardex-mega-menu-main-wrapper {
+    width: fit-content;
+}
+
 button {
     cursor: pointer;
     outline: none;
