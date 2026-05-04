@@ -10,7 +10,14 @@ use AARDEX\Components\MegaMenu\ItemsGroup;
 use AARDEX\Components\MegaMenu\MegaMenuComponent;
 use AARDEX\Components\MegaMenu\Pannel;
 use AARDEX\Components\MegaMenu\SecondLevelItem;
+use AARDEX\Components\MegaMenu\Teste;
 use AARDEX\Components\MegaMenu\ThirdLevelItem;
+
+// echo '<pre>';
+
+// var_dump(Teste::make());
+
+// die();
 
 // TODO: Use a class to handle the components.
 add_shortcode(
@@ -95,7 +102,8 @@ add_shortcode(
         FirstLevelItem::make('Contact'),
         ]);
 
-		return $menu->render();
+		// return $menu->render();
+		return Teste::make();
 	}
 );
 

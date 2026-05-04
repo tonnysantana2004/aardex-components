@@ -45,7 +45,7 @@ class Pannel {
 	public static function make( $args ) {
 		$instance            = new self();
 		$instance->args      = $args;
-		$instance->pannel_id = wp_unique_id( 'aardex-mega-menu-pannel-' );
+		$instance->pannel_id = $args['pannel_id'] ?? 'aardex-mega-menu-pannel-1';
 
 		return $instance;
 	}
