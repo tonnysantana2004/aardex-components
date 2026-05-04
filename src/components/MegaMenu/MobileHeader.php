@@ -17,8 +17,6 @@ class MobileHeader {
 	 */
 	public static function render() {
 
-		ob_start();
-
 		// Main Wrapper.
 		$output = '<div class="aardex-mega-menu--mobile-header">';
 
@@ -32,7 +30,7 @@ class MobileHeader {
 		$output .= '</div>';
 
 		// Logo Wrapper.
-		$output .= '<button class="aardex-mega-menu--mobile-header-close" >';
+		$output .= '<button class="aardex-mega-menu--toggle-button" >';
 
 		// Icon.
 		// Ignoring because I am not fetching any data from remote, but using it locally.
