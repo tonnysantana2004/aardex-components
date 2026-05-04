@@ -83,33 +83,23 @@ class Pannel {
 		// Content.
 		$output .= '<ul class="aardex-mega-menu--children">';
 
-		if ( isset( $this->args['see_all_button'] ) ) {
-
-			$output .= '<li class="aardex-mega-menu--pannel_see_all">';
-			$output .= '<a href="' . $this->args['see_all_button']['link'] . '">';
-			$output .= $this->args['see_all_button']['label'];
-			$output .= '</a>';
-			$output .= '</li>';
-		}
-
 		if ( ! empty( $this->pannel_items ) ) {
-
-			$i = 0;
 
 			foreach ( $this->pannel_items as $item ) {
 				$output .= $item->render();
-
-				++$i;
-
-				if ( count( $this->pannel_items ) !== $i ) {
-
-					$output .= '<div class="aardex-mega-menu--vertical-spacing"></div>';
-				}
 			}
 		}
 
 		$output .= '</ul>';
 
+		if ( isset( $this->args['see_all_button'] ) ) {
+
+			$output .= '<div class="aardex-mega-menu--pannel_see_all">';
+			$output .= '<a href="' . $this->args['see_all_button']['link'] . '">';
+			$output .= $this->args['see_all_button']['label'];
+			$output .= '</a>';
+			$output .= '</div>';
+		}
 		$output .= '</li>';
 
 		return $output;

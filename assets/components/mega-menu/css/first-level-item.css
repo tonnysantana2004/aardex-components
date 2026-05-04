@@ -1,4 +1,4 @@
-@media screen and (max-width:1024px) {
+@media screen and (max-width:1024.9px) {
 
     /* First Level Item  */
     .aardex-mega-menu--first_level_button {
@@ -30,7 +30,7 @@
 }
 
 
-@media screen and (min-width:1024px) {
+@media screen and (min-width:1024.9px) {
 
     .aardex-mega-menu--first_level_button {
 

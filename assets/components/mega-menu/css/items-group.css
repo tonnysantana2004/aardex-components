@@ -1,4 +1,4 @@
-@media screen and (max-width:1024px) {
+@media screen and (max-width:1024.9px) {
 
     .aardex-mega-menu--list_item_group>ul {
         display: flex;
@@ -37,19 +37,34 @@
 
 }
 
-@media screen and (min-width:1024px) {
+@media screen and (min-width:1024.9px) {
 
     .aardex-mega-menu--list_item_group {
-        width: 236px;
+        width: 268px;
         box-sizing: border-box;
-        border: none;
+        padding-right: 32px;
 
-        &:not(:nth-child(2)) {
-            /* padding-left: 32px; */
+        border: none;
+        border-right: solid 1px #E8E8E8;
+
+        &:last-child {
+            padding-right: 0;
         }
 
         &:last-child {
             border: none;
+        }
+    }
+
+    #aardex-mega-menu-pannel-2 {
+        & .aardex-mega-menu--list_item_group {
+            padding: 0;
+            border: none;
+
+            & >ul {
+
+                gap: 16px;
+            }
         }
     }
 
@@ -84,7 +99,7 @@
         content: "";
         width: 18px;
         height: 1px;
-        background: var(--aardex-mega-menu-primary-color);
+        background: #00ABE9;
         display: block;
     }
 
