@@ -20,14 +20,14 @@ class ItemsGroup {
 	 *
 	 * @var string
 	 */
-	public ?string $label;
+	public ?string $label = null;
 
 	/**
 	 * Inner Items objects array
 	 *
 	 * @var SecondLevelItem[]
 	 */
-	public array $inner_items;
+	public ?array $inner_items = null;
 
 	/**
 	 * Make Function
